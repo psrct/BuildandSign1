@@ -14,10 +14,10 @@ export const metadata = {
 
 const navigation = [
   { name: 'หน้าแรก', href: '#', current: true },
-  { name: 'ทำไมต้องเป็นเรา', href: '#', current: false },
-  { name: 'บริการ', href: '#', current: false },
+  { name: 'ทำไมต้องเป็นเรา', href: '#whyus', current: false },
+  { name: 'บริการ', href: '#service', current: false },
   { name: 'ตัวอย่างผลงาน', href: '#', current: false },
-  { name: 'บทความ', href: '#', current: false },
+  { name: 'บทความ', href: '#article', current: false },
   { name: 'ติดต่อเรา', href: '#', current: false },
 ]
 
@@ -45,7 +45,7 @@ export default function Header(){
           <div className="relative flex h-22 items-center justify-between">
 
             {/* Dropdown list icon โชว์เมื่อจอเล็ก */}
-            <div className="absolute inset-y-0 left-0 items-center hidden [@media(max-width:1180px)]:flex">
+            <div className="absolute inset-y-0 left-0 items-center hidden [@media(max-width:1180px)]:flex hover:scale-95 transition">
               {/* Mobile menu button*/}
               <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-gray-600 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset">
                 <span className="absolute -inset-0.5" />
@@ -71,7 +71,7 @@ export default function Header(){
                       aria-current={item.current ? 'page' : undefined}
                       className={classNames(
                         item.current ? 'bg-[#FFD369] text-[#013E7B]' : 'text-white hover:bg-gray-600 hover:text-white',
-                        'rounded-md px-1 py-2 text-2xl font-medium',
+                        'rounded-md px-1 py-2 text-2xl font-medium hover:scale-115 transition',
                       )}
                     >
                       {item.name}
@@ -94,7 +94,7 @@ export default function Header(){
                 aria-current={item.current ? 'page' : undefined}
                 className={classNames(
                   item.current ? 'bg-white text-[#013E7B]' : 'text-white hover:bg-gray-600 hover:text-white',
-                  'block rounded-md px-3 py-2 text-md font-medium',
+                  'block rounded-md px-3 py-2 text-md font-medium hover:scale-95 transition',
                 )}
               >
                 {item.name}

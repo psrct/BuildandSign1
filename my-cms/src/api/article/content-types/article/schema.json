@@ -1,10 +1,10 @@
 {
-  "kind": "singleType",
-  "collectionName": "home_pages",
+  "kind": "collectionType",
+  "collectionName": "articles",
   "info": {
-    "singularName": "home-page",
-    "pluralName": "home-pages",
-    "displayName": "Home Page"
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "article"
   },
   "options": {
     "draftAndPublish": true
@@ -14,13 +14,15 @@
     "title": {
       "type": "string"
     },
-    "description": {
+    "detail": {
+      "type": "text"
+    },
+    "summary": {
       "type": "text"
     },
     "image": {
       "type": "media",
-      "multiple": false,
-      "required": true,
+      "multiple": true,
       "allowedTypes": [
         "images",
         "files",

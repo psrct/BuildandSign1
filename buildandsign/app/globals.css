@@ -48,6 +48,9 @@ body {
   #textcard{
     font-size: 20px;
   }
+  #card{
+    grid-template-columns: 45% 50%;
+  }
 }
 @media (max-width:960px){
   #card{

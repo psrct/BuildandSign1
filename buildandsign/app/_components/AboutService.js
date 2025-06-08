@@ -32,7 +32,7 @@ export default function AboutService(){
             className="rounded shadow-lg"
           />
           <h2 className="text-white text-5xl font-bold mt-6 mb-3 text-center">งานต่อเติมครบวงจร</h2>
-          <p className="text-2xl leading-relaxed text-center">
+          <p className="text-2xl leading-relaxed text-center" id="service">
             เราให้บริการ <span className="font-semibold">เขียนแบบทุกขนาด ประเมินราคา BOQ สร้างอาคาร ต่อเติมครบวงจร รับออกแบบและขึ้นแบบ 3D งานก่อสร้าง โกดัง หลังคา ที่จอดรถ</span><br />
             โดยทีมงานวิศวกร 100% ในการควบคุมการก่อสร้าง
           </p>
