@@ -1,4 +1,27 @@
 @import "tailwindcss";
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #555;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+html {
+    scroll-behavior: smooth;
+}
 
 :root {
   --background: #ffffff;
@@ -24,97 +47,23 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (min-width:1200px){
-  #textcard2{
-    font-size: 20px;
-  }
-}
-@media (max-width:1180px){
-  #aboutus{
-    margin-top: 40px;
-  }
-  #BAS{
-    font-size: var(--text-5xl); /* 3rem (48px) */ 
-    line-height: var(--text-5xl--line-height); /* 1 */
-  }
-  #BAS2{
-    font-size: var(--text-3xl); /* 1.875rem (30px) */ 
-    line-height: var(--text-3xl--line-height); /* calc(2.25 / 1.875) */
-  }
-  #paragram{
-    font-size: var(--text-2xl); /* 1.5rem (24px) */ 
-    line-height: var(--text-2xl--line-height); /* calc(2 / 1.5) */
-  }
-  #textcard{
-    font-size: 20px;
-  }
-  #card{
-    grid-template-columns: 45% 50%;
-  }
-}
-@media (max-width:960px){
-  #card{
-    grid-template-columns: 45% 50%;
-  }
-  #textcard{
-    font-size: 20px;
-  }
-}
-
-@media (max-width:850px){
-  #aboutus{
-    margin-top: 40px;
-  }
-  #BAS{
-    font-size: var(--text-5xl); /* 3rem (48px) */ 
-    line-height: var(--text-5xl--line-height); /* 1 */
-  }
-  #BAS2{
-    display: none;
-  }
-  #paragram{
-    font-size: var(--text-2xl); /* 1.875rem (30px) */ 
-    line-height: var(--text-2xl--line-height); /* calc(2.25 / 1.875) */
-  }
-  #BASv2{
-    display: block;
-    font-size: var(--text-2xl); /* 1.875rem (30px) */ 
-    line-height: var(--text-2xl--line-height); /* calc(2.25 / 1.875) */
-  }
-}
-@media (max-width:765px){
-  #card{
-    grid-template-columns: 30% 30% 35%;
-  }
-  #textcard{
-    font-size: 20px;
-    padding-top: 10 px;
-  }
-}
-
-@media (max-width:500px){
-  #BAS{
+@media (max-width: 900px){
+  #head{
+    margin-top: 20px;
     font-size: 40px;
-    line-height: var(--text-4xl--line-height); /* 1 */
   }
-  #BASv2{
-    display: none;
+  #head2{
+    font-size: 22px;
   }
-  #paragram{
-    padding-top: 20px;
-    font-size: large;
+  #btnhead{
+    padding: 10px 30px 10px 30px;
   }
-  #icon{
-    font-size: var(--text-xl); /* 1.25rem (20px) */ 
-    line-height: var(--text-xl--line-height); /* calc(1.75 / 1.25) */
+  #contact1{
+    margin: 5px;
+    gap: 10px;
   }
-  #card{
-    grid-template-columns: 100%;
-    
-  }
-  #textcard{
-    font-size: 25px;
-    padding-top: 10 px;
+  #textlg{
+    font-size: 18px;
   }
 }
 

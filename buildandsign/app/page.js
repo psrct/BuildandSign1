@@ -1,18 +1,16 @@
-import Poster from './_components/Poster';
-import Aboutus from './_components/Aboutus';
 import AboutService from './_components/AboutService';
-import Service from './_components/Services';
 import Whyus from './_components/Whyus';
-import Article from './article/article';
+import Article from './article/articles';
+import Index from './_components/index';
+import Myservice from './_components/myservice';
 
 export default async function Home() {
   return (
     <>
-    <Poster />
-    <Aboutus />
-    <AboutService />
-    <Service />
+    <Index />  
     <Whyus />
+    <Myservice />
+    <AboutService />
     <Article/>
     </>
   );
