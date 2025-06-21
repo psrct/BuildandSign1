@@ -26,7 +26,7 @@ const fetchAllBuildings = async () => {
 }
 
 export default async function BuildingDetailPage({ params }) {
-  const { slug } = await params  // เพิ่ม await ที่นี่
+  const { slug } = params
   const building = await fetchBuildingBySlug(slug)
   const allBuildings = await fetchAllBuildings()
   
@@ -36,14 +36,6 @@ export default async function BuildingDetailPage({ params }) {
 
   const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL
   const relatedBuildings = allBuildings.filter(b => b.id !== building.id).slice(0, 4)
-  
-  // Helper function to get full image URL
-  const getImageUrl = (imageUrl) => {
-    if (imageUrl.startsWith('http')) {
-      return imageUrl // Already full URL
-    }
-    return `${baseUrl}${imageUrl}` // Relative URL, prepend base URL
-  }
 
   return (
     <>
@@ -52,7 +44,7 @@ export default async function BuildingDetailPage({ params }) {
         <div className="relative h-96 bg-[#393E46] overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src={getImageUrl(building.image.url)}
+              src={`${baseUrl}${building.image.url}`}
               alt={building.image.alternativeText || building.title}
               fill
               className="object-cover opacity-30"
@@ -81,10 +73,10 @@ export default async function BuildingDetailPage({ params }) {
                 {/* Building Image */}
                 <div className="mb-8">
                   <Image
-                    src={getImageUrl(building.image.url)}
+                    src={`${baseUrl}${building.image.url}`}
                     alt={building.image.alternativeText || building.title}
-                    width={400}
-                    height={200}
+                    width={800}
+                    height={400}
                     className="w-full h-96 object-cover rounded-lg shadow-md"
                   />
                 </div>
@@ -265,7 +257,7 @@ export default async function BuildingDetailPage({ params }) {
                         className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-200 transition-colors"
                       >
                         <Image
-                          src={getImageUrl(relatedBuilding.image.url)}
+                          src={`${baseUrl}${relatedBuilding.image.url}`}
                           alt={relatedBuilding.title}
                           width={60}
                           height={60}
@@ -305,7 +297,7 @@ export default async function BuildingDetailPage({ params }) {
             "@type": "Service",
             "name": building.title,
             "description": building.detail || building.title,
-            "image": getImageUrl(building.image.url),
+            "image": `${baseUrl}${building.image.url}`,
             "provider": {
               "@type": "LocalBusiness",
               "name": "BuildandSign",

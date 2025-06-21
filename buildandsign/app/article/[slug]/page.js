@@ -4,7 +4,12 @@ export async function generateMetadata({ params }) {
   const slug = params.slug;
 
   try {
+<<<<<<< HEAD
     const res = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/articles?filters[slug][$eq]=${slug}&populate=*`);
+=======
+    // Fixed API endpoint
+    const res = await axios.get(`${process.env.STRAPI_URL}/api/articles?filters[slug][$eq]=${slug}&populate=*`);
+>>>>>>> parent of b5ee900 (change path of strapi api)
     const data = res.data.data;
     
     if (!data || data.length === 0) {
@@ -105,8 +110,9 @@ export default async function ArticleDetail({ params }) {
   }
   
   const article = articles[0];
-  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
-  const canonicalUrl = `${baseUrl}/article/${article.slug}`;
+  const baseUrl = process.env.STRAPI_URL;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+  const canonicalUrl = `${siteUrl}/article/${article.slug}`;
   
   // Generate structured data for article
   const structuredData = {
@@ -120,15 +126,15 @@ export default async function ArticleDetail({ params }) {
     "author": {
       "@type": "Organization",
       "name": "BuildandSign",
-      "url": baseUrl
+      "url": siteUrl
     },
     "publisher": {
       "@type": "Organization",
       "name": "BuildandSign",
-      "url": baseUrl,
+      "url": siteUrl,
       "logo": {
         "@type": "ImageObject",
-        "url": `${baseUrl}/logo.png`
+        "url": `${siteUrl}/logo.png`
       }
     },
     "mainEntityOfPage": {
@@ -140,7 +146,7 @@ export default async function ArticleDetail({ params }) {
     ...(article.image?.[0] && {
       "image": {
         "@type": "ImageObject",
-        "url": `${article.image[0].url}`,
+        "url": `${baseUrl}${article.image[0].url}`,
         "width": 1200,
         "height": 630,
         "caption": article.image[0].alternativeText || article.title
@@ -157,13 +163,13 @@ export default async function ArticleDetail({ params }) {
         "@type": "ListItem",
         "position": 1,
         "name": "หน้าแรก",
-        "item": baseUrl
+        "item": siteUrl
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "บทความ",
-        "item": `${baseUrl}/articles`
+        "item": `${siteUrl}/articles`
       },
       {
         "@type": "ListItem",
@@ -176,6 +182,7 @@ export default async function ArticleDetail({ params }) {
 
   return (
     <>
+<<<<<<< HEAD
       {/* Structured Data Scripts */}
       <script
         type="application/ld+json"
@@ -185,6 +192,79 @@ export default async function ArticleDetail({ params }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
       />
+=======
+      <Head>
+        {/* Primary Meta Tags */}
+        <title>{pageTitle}</title>
+        <meta name="title" content={pageTitle} />
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content={`${article.title}, ป้ายก่อสร้าง, ป้ายโครงการ, ป้ายเตือน, ป้ายความปลอดภัย, งานป้าย`} />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <meta name="author" content="BuildandSign" />
+        <meta name="language" content="th" />
+        <meta httpEquiv="content-language" content="th" />
+        
+        {/* Canonical URL */}
+        <link rel="canonical" href={canonicalUrl} />
+        
+        {/* Article specific meta tags */}
+        {article.publishedAt && (
+          <meta name="article:published_time" content={article.publishedAt} />
+        )}
+        {article.updatedAt && (
+          <meta name="article:modified_time" content={article.updatedAt} />
+        )}
+        <meta name="article:author" content="BuildandSign" />
+        <meta name="article:section" content="งานป้ายก่อสร้าง" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="BuildandSign" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:locale" content="th_TH" />
+        {article.publishedAt && (
+          <meta property="article:published_time" content={article.publishedAt} />
+        )}
+        {article.updatedAt && (
+          <meta property="article:modified_time" content={article.updatedAt} />
+        )}
+        
+        {/* Article image for Open Graph */}
+        {article.image?.[0] && (
+          <>
+            <meta property="og:image" content={`${baseUrl}${article.image[0].url}`} />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta property="og:image:alt" content={article.image[0].alternativeText || article.title} />
+            <meta property="og:image:type" content="image/jpeg" />
+          </>
+        )}
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        {article.image?.[0] && (
+          <meta name="twitter:image" content={`${baseUrl}${article.image[0].url}`} />
+        )}
+
+        {/* Additional SEO tags */}
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="theme-color" content="#1e40af" />
+        
+        {/* Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+        />
+      </Head>
+>>>>>>> parent of b5ee900 (change path of strapi api)
       
       <main className="w-full min-h-screen mx-auto px-4 sm:px-6 lg:px-10 pt-30 pb-8">
         <div className="max-w-4xl mx-auto">
@@ -244,7 +324,7 @@ export default async function ArticleDetail({ params }) {
           {article.image?.[0] && (
             <figure className="mb-8">
               <img
-                src={`${article.image[0].url}`}
+                src={`${baseUrl}${article.image[0].url}`}
                 alt={article.image[0].alternativeText || `รูปประกอบบทความ ${article.title}`}
                 className="w-full max-w-2xl mx-auto rounded-xl shadow-lg object-cover"
                 width="800"
