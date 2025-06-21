@@ -4,12 +4,7 @@ export async function generateMetadata({ params }) {
   const slug = params.slug;
 
   try {
-<<<<<<< HEAD
     const res = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/articles?filters[slug][$eq]=${slug}&populate=*`);
-=======
-    // Fixed API endpoint
-    const res = await axios.get(`${process.env.STRAPI_URL}/api/articles?filters[slug][$eq]=${slug}&populate=*`);
->>>>>>> parent of b5ee900 (change path of strapi api)
     const data = res.data.data;
     
     if (!data || data.length === 0) {
@@ -182,17 +177,6 @@ export default async function ArticleDetail({ params }) {
 
   return (
     <>
-<<<<<<< HEAD
-      {/* Structured Data Scripts */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
-      />
-=======
       <Head>
         {/* Primary Meta Tags */}
         <title>{pageTitle}</title>
@@ -264,7 +248,6 @@ export default async function ArticleDetail({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
         />
       </Head>
->>>>>>> parent of b5ee900 (change path of strapi api)
       
       <main className="w-full min-h-screen mx-auto px-4 sm:px-6 lg:px-10 pt-30 pb-8">
         <div className="max-w-4xl mx-auto">
