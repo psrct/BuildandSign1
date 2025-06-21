@@ -1,8 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-    domains: ['127.0.0.1'], // หรือถ้าใช้ localhost ก็ใส่ 'localhost'
-  },
+  //   images: {
+  //   remotePatterns: [
+  //     {
+  //       protocol: 'https',
+  //       hostname: 'grateful-agreement-d19b9e7df0.strapiapp.com',
+  //       port: '',
+  //       pathname: '/**',
+  //     },
+  //   ],
+  // },
 };
 export default nextConfig;
 

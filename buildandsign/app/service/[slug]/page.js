@@ -25,7 +25,7 @@ const fetchAllServices = async () => {
 }
 
 export default async function ServiceDetailPage({ params }) {
-  const { slug } = params
+  const { slug } = await params
   const service = await fetchServiceBySlug(slug)
   const allServices = await fetchAllServices()
   
@@ -43,7 +43,7 @@ export default async function ServiceDetailPage({ params }) {
         <div className="relative h-96 bg-blue-600 overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src={`${baseUrl}${service.image.url}`}
+              src={`${service.image.url}`}
               alt={service.image.alternativeText || service.title}
               fill
               className="object-cover opacity-30"
@@ -72,7 +72,7 @@ export default async function ServiceDetailPage({ params }) {
                 {/* Service Image */}
                 <div className="mb-8">
                   <Image
-                    src={`${baseUrl}${service.image.url}`}
+                    src={`${service.image.url}`}
                     alt={service.image.alternativeText || service.title}
                     width={800}
                     height={400}
@@ -201,7 +201,7 @@ export default async function ServiceDetailPage({ params }) {
                         className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
                       >
                         <Image
-                          src={`${baseUrl}${relatedService.image.url}`}
+                          src={`${relatedService.image.url}`}
                           alt={relatedService.title}
                           width={60}
                           height={60}
@@ -232,7 +232,7 @@ export default async function ServiceDetailPage({ params }) {
             "@type": "Service",
             "name": service.title,
             "description": service.detail || service.title,
-            "image": `${baseUrl}${service.image.url}`,
+            "image": `${service.image.url}`,
             "provider": {
               "@type": "LocalBusiness",
               "name": "BuildandSign",

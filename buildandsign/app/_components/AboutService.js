@@ -71,7 +71,7 @@ export default async function AboutService(){
                   {/* รูปภาพเต็มกรอบด้านบน */}
                   <div className="w-full h-40 overflow-hidden">
                     <img
-                      src={`${baseUrl + service.image.url}`}
+                      src={`${service.image.url}`}
                       alt={service.image.alternativeText + service.title + service.detail}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
@@ -132,7 +132,7 @@ export default async function AboutService(){
               {builds.map((building, index) => (
                 <Link
                   key={building.id}
-                  href={`/building/${building.slug || building.id}`}
+                  href={`/building/${building.slug}`}
                   className="flex flex-col items-center text-center bg-white border border-gray-200 rounded-xl shadow-md p-4 hover:scale-108 transition-transform duration-300 group"
                   data-aos="flip-up"
                   data-aos-duration="800"
@@ -140,7 +140,7 @@ export default async function AboutService(){
                 >
                   <div className="w-[100px] h-[100px] flex items-center justify-center max-sm:w-[100px] max-sm:h-[100px] overflow-hidden rounded-xl">
                     <img
-                      src={`${baseUrl + building.image.url}`}
+                      src={`${building.image.url}`}
                       alt={building.image.alternativeText + building.title + building.detail}
                       className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
                     />

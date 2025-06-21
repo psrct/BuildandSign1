@@ -3,7 +3,7 @@ import axios from "axios"
 
 const getServerSideProps = async () => {
   try {
-    const res = await axios.get(`${process.env.STRAPI_URL}/api/articles?populate=*`)
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/articles?populate=*`)
     return res.data.data
   } catch (error) {
     console.log('error', error)
@@ -13,7 +13,7 @@ const getServerSideProps = async () => {
 
 export default async function ArticlesPage() {
   const articles = await getServerSideProps();
-  const baseUrl = process.env.STRAPI_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
   
   // Generate structured data for articles
   const structuredData = {
@@ -21,7 +21,7 @@ export default async function ArticlesPage() {
     "@type": "CollectionPage",
     "name": "บทความเกี่ยวกับงานป้ายก่อสร้าง",
     "description": "รวมบทความ ความรู้ และแนวทางเกี่ยวกับงานป้ายก่อสร้าง ป้ายเตือน และป้ายโครงการต่าง ๆ ครบจบในที่เดียว",
-    "url": `${process.env.STRAPI_URL}/articles`,
+    "url": `${process.env.NEXT_PUBLIC_STRAPI_URL}/articles`,
     "mainEntity": {
       "@type": "ItemList",
       "numberOfItems": articles.length,
@@ -32,7 +32,7 @@ export default async function ArticlesPage() {
           "@type": "Article",
           "headline": article.title,
           "description": article.summary,
-          "url": `${process.env.STRAPI_URL}/article/${article.slug}`,
+          "url": `${process.env.NEXT_PUBLIC_STRAPI_URL}/article/${article.slug}`,
           "image": article.image?.[0] ? `${baseUrl}${article.image[0].url}` : undefined,
           "datePublished": article.publishedAt || article.createdAt,
           "dateModified": article.updatedAt,
@@ -45,7 +45,7 @@ export default async function ArticlesPage() {
     }
   };
 
-  const articlesUrl = `${process.env.STRAPI_URL}/articles`;
+  const articlesUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}/articles`;
 
   return (
     <>
@@ -72,7 +72,7 @@ export default async function ArticlesPage() {
         <meta property="og:locale" content="th_TH" />
         {articles.length > 0 && articles[0].image?.[0] && (
           <>
-            <meta property="og:image" content={`${baseUrl}${articles[0].image[0].url}`} />
+            <meta property="og:image" content={`${articles[0].image[0].url}`} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
             <meta property="og:image:alt" content={articles[0].image[0].alternativeText || articles[0].title} />
@@ -84,7 +84,7 @@ export default async function ArticlesPage() {
         <meta name="twitter:title" content="บทความเกี่ยวกับงานป้ายก่อสร้าง | BuildandSign" />
         <meta name="twitter:description" content="รวมบทความ ความรู้ และแนวทางเกี่ยวกับงานป้ายก่อสร้าง ป้ายเตือน และป้ายโครงการต่าง ๆ" />
         {articles.length > 0 && articles[0].image?.[0] && (
-          <meta name="twitter:image" content={`${baseUrl}${articles[0].image[0].url}`} />
+          <meta name="twitter:image" content={`${articles[0].image[0].url}`} />
         )}
 
         {/* Additional SEO tags */}
@@ -121,7 +121,7 @@ export default async function ArticlesPage() {
                     {article.image?.[0] && (
                       <div className="relative">
                         <img
-                          src={`${baseUrl}${article.image[0].url}`}
+                          src={`${article.image[0].url}`}
                           alt={article.image[0].alternativeText + `รูปประกอบบทความ ${article.title}`}
                           className="w-full h-40 object-cover"
                           loading={index < 4 ? "eager" : "lazy"}
